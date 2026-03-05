@@ -1,0 +1,225 @@
+:root {
+    --bg-color: #192f2f;
+    --page-bg: linear-gradient(135deg, #2F4F4F 0%, #1F3A3A 100%);
+    --header-bg: linear-gradient(135deg, #2F4F4F 0%, #1F3A3A 100%);
+    --box-bg: #2F4F4F;
+    --box-hover: #3A5F5F;
+    --text-primary: #FFFFFF;
+    --text-secondary: #C7D1D1;
+    --border-color: #2F4F4F;
+}
+
+[data-theme="pierce-the-veil"] {
+    --bg-color: #192f2f;
+    --page-bg: linear-gradient(135deg, #2F4F4F 0%, #1F3A3A 100%);
+    --header-bg: linear-gradient(135deg, #2F4F4F 0%, #1F3A3A 100%);
+    --box-bg: #2F4F4F;
+    --box-hover: #3A5F5F;
+    --text-primary: #FFFFFF;
+    --text-secondary: #C7D1D1;
+    --border-color: #2F4F4F;
+}
+
+[data-theme="avenged-sevenfold"] {
+    --bg-color: #0F0F0F;
+    --page-bg: linear-gradient(135deg, #0F0F0F 0%, #1C1C1C 100%);
+    --header-bg: linear-gradient(135deg, #0F0F0F 0%, #1C1C1C 100%);
+    --box-bg: #1C1C1C;
+    --box-hover: #5B3A6E;
+    --text-primary: #EDEBE6;
+    --text-secondary: #B5B5B5;
+    --border-color: #7A5591;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.page {
+    width: 100%;
+    max-width: 500px;
+    background: var(--page-bg);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 2px solid var(--border-color);
+}
+
+.page:hover {
+    transform: translateY(-5px);
+}
+
+.header {
+    background: var(--header-bg);
+    color: var(--text-primary);
+    padding: 30px;
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.header p {
+    margin: 10px 0 0;
+    opacity: 0.9;
+}
+
+.search-container {
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#bandSearch {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid var(--border-color);
+    border-radius: 5px;
+    width: 300px;
+    background-color: var(--box-bg);
+    color: var(--text-secondary);
+}
+
+#searchBtn {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: var(--box-bg);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#searchBtn:hover {
+    background-color: var(--box-hover);
+}
+
+.band-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--box-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    margin-top: 5px;
+    width: 300px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+}
+
+.band-dropdown.active {
+    display: block;
+}
+
+.band-option {
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: background-color 0.3s;
+}
+
+.band-option:hover {
+    background-color: var(--box-hover);
+    color: var(--text-primary);
+}
+
+.box {
+    background: var(--box-bg);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    background: var(--box-hover);
+}
+
+.title h2 {
+    margin: 0;
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.info h2, .favorites h3, .review h3 {
+    margin: 0 0 15px;
+    color: var(--text-primary);
+    font-size: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.info p, .review p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.favorites ol {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--text-secondary);
+}
+
+.favorites li {
+    margin-bottom: 8px;
+}
+
+.spotify iframe {
+    border-radius: 12px;
+    width: 100%;
+    height: 352px;
+    border: 2px solid var(--border-color);
+}
+
+[data-theme="avenged-sevenfold"] .box {
+    border-color: #9A9A9A;
+}
+
+[data-theme="avenged-sevenfold"] .box:hover {
+    border-color: #8C8C88;
+}
+
+@media (max-width: 600px) {
+    .page {
+        margin: 10px;
+    }
+    
+    .box {
+        margin: 15px;
+        padding: 15px;
+    }
+
+    #bandSearch {
+        width: 100%;
+    }
+
+    .search-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}

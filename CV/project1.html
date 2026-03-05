@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Reviews</title>
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+    <div class="page album1">
+        <header class="header">
+            <h1>Album Reviews</h1>
+            <p>Personal opinions on music</p>
+            <div class="search-container">
+                <input type="text" id="bandSearch" placeholder="Click search to see bands..." readonly>
+                <button id="searchBtn">Search</button>
+                <div id="bandDropdown" class="band-dropdown"></div>
+            </div>
+        </header>
+
+        <main id="contentContainer">
+        </main>
+    </div>
+
+    <script>
+        const bandData = {
+            "Pierce The Veil": {
+                album: "Selfish Machines",
+                info: "Pierce the veil is an American post-hardcore band formed in 2006 in San Diego, California. The band was formed by brothers Vic and Mike Fuentes. Their music is known for emotional lyrics, intricate guitar work, and a blend of aggressive and melodic elements. The album Selfish Machines, released in 2010, is their second studio album and features a mix of post-hardcore, emo, and alternative rock styles.",
+                favorites: ["Disasterology", "Caraphernelia", "Bulletproof Love"],
+                review: "Selfish Machines is a masterpiece that perfectly captures the raw emotion and energy of Pierce the Veil. It has outstanding tracks that showcase the band's musical prowess and lyrical depth. It has a way to perfectly connect something energetic and emotional, making it a must-listen for fans of the genre. Overall, Selfish Machines is a standout album that shows Pierce the Veil at their best. 8/10.",
+                spotifyEmbed: "https://open.spotify.com/embed/album/6F05ZwnERzhfJ7KNVq6fsU"
+            },
+            "Avenged Sevenfold": {
+                album: "Diamonds in the Rough",
+                info: "Avenged Sevenfold is an American metal band formed in 1999 in Huntington Beach, California. The band is known for their diverse musical style and hard guitar riffs.",
+                favorites: ["Crossroads", "Dancing Dead", "Until the End"],
+                review: "the album Diamonds in the Rough made in 2020 is one of the most underatted albums by Avenged Sevenfold. it shows the bands ability to experiment with different sounds while still maintaining their core metal identity. The album features a mix of heavy tracks and melodic tunes, showcasing the band's versatility. Overall, Diamonds in the Rough is a solid album that offers a unique listening experience for fans of Avenged Sevenfold and metal music in general. 7.5/10.",
+                spotifyEmbed: "https://open.spotify.com/embed/album/6VcCunBnnw4BVkCit5rk7d?utm_source=generator&theme=0"
+            }
+        };
+
+        function displayBandInfo(bandName) {
+            const data = bandData[bandName];
+            if (!data) {
+                document.getElementById('contentContainer').innerHTML = '<p class="box">No information found for this band.</p>';
+                return;
+            }
+
+            const themeMap = {
+                "Pierce The Veil": "pierce-the-veil",
+                "Avenged Sevenfold": "avenged-sevenfold"
+            };
+            
+            document.documentElement.setAttribute('data-theme', themeMap[bandName] || '');
+
+            const content = `
+                <section class="box title">
+                    <h2>${data.album} - ${bandName}</h2>
+                </section>
+                <section class="box info">
+                    <h2>Band and Album Information</h2>
+                    <p>${data.info}</p>
+                </section>
+                <section class="box favorites">
+                    <h3>My top 3 favorite songs from the album.</h3>
+                    <ol>
+                        ${data.favorites.map(song => `<li>${song}</li>`).join('')}
+                    </ol>
+                </section>
+                <section class="box review">
+                    <h3>Review</h3>
+                    <p>${data.review}</p>
+                </section>
+                <section class="box spotify">
+                    <iframe src="${data.spotifyEmbed}" 
+                        width="100%" 
+                        height="352" 
+                        frameBorder="0" 
+                        allowfullscreen="" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                        loading="lazy">
+                    </iframe>
+                </section>
+            `;
+
+            document.getElementById('contentContainer').innerHTML = content;
+            document.getElementById('bandDropdown').classList.remove('active');
+        }
+
+        function createBandDropdown() {
+            const dropdown = document.getElementById('bandDropdown');
+            dropdown.innerHTML = '';
+            
+            Object.keys(bandData).forEach(band => {
+                const option = document.createElement('div');
+                option.className = 'band-option';
+                option.textContent = band;
+                option.addEventListener('click', () => {
+                    document.getElementById('bandSearch').value = band;
+                    displayBandInfo(band);
+                });
+                dropdown.appendChild(option);
+            });
+            
+            dropdown.classList.toggle('active');
+        }
+
+        document.getElementById('searchBtn').addEventListener('click', () => {
+            createBandDropdown();
+        });
+
+      
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                document.getElementById('bandDropdown').classList.remove('active');
+            }
+        });
+
+        displayBandInfo("Pierce The Veil");
+    </script>
+</body>
+</html>

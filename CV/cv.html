@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Volkers</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+<link rel ="stylesheet" href ="css.css">
+</head>
+<button id="theme-toggle" class="theme-toggle">
+    <span class="sun-icon">☀️</span>
+    <span class="moon-icon">🌙</span>
+</button>
+<body>
+<Header class="container text-center py-5">
+   <h1 class="name">Kevin Volkers</h1>
+    <h2 class="role">Software Developer Student</h2>
+<p class="intro intro-text">
+    Software developer student met intresse in webdevelopment en applicatieontwikkeling.
+</p>
+<header>
+<section class="container section-block">
+    <h3 class="section-title">Over mij</h3>
+    <p class="about-text">
+        Mijn naam is Kevin Volkers, ik kom uit julianadorp en ik ben 17 jaar.
+        Op het moment volg ik de opleiding software developer bij Vonk schagen.
+         Mijn interesse ligt vooral bij het bouwen & onderhouden van websites en webapplicaties.
+    </p>
+     <section class="container section-block">
+    <h3 class="section-title">Vaardigheden</h3>
+    <ul class="list-unstyled skills-list">
+        <li>HTML5 'basis'</li>
+        <li>CSS3 'basis'</li>
+        <li>JavaScript 'beginner/in ontwikkeling'</li>
+        <li>Python 'in ontwikkeling'</li>
+    </ul>
+    <section>
+        <section class="container section-block">
+  <h3 class="section-title">Projecten</h3>
+  <div class="project-card">
+    <h4>Album review</h4>
+    <p>Kleine reviews in het engels van albums die ik veel luister</p>
+    <a href="project1.html">
+    <strong>bekijk project</strong>
+</a>
+
+</a>
+    </div>
+    </section>
+    <section class="container section-block">
+    <h3 class="section-title">Contact</h3>
+    <ul class="list-unstyled contact-list">
+        <li>
+            <a href="mailto:Kevin.volkers@student.vonknh.nl">Kevin.volkers@student.vonknh.nl</a>
+            </li>
+        </li>
+        <a href="telefoon:06 23441583">06 23441583</a>
+        </li>
+    </ul>
+    </section>
+     <footer class="container text-center">
+    <p>© 2026 Kevin Volkers - Software Developer Student</p>
+  </footer>
+
+
+
+<script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    });
+</script>
+
+</body>
+</html>
